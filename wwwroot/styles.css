@@ -35,28 +35,42 @@ html, body {
     font-weight: 300;
 }
 
-.weather, .clock, .railway {
-    margin: 90px 40px;
+.clock, .weather, .railway {
+    padding: 20px;
 }
 
 .weather .title {
-    font-size: 48px;
+    font-size: 72px;
 }
 
 .weather .temp {
     font-weight: 300;
-    font-size: 32px;
+    font-size: 48px;
 }
 
 .clock .time {
-    font-size: 72px;
+    font-size: 124px;
+    margin: 0;
 }
 
 .clock .date {
-    font-size: 24px;
+    font-size: 32px;
 }
 
 .railway .trainTime {
     font-size: 22px;
     margin: 10px 0;
+}
+
+/* grid stuff */
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row > .col {
+    display: block;
+    flex: 1;
+    border: 1px solid red;
 }

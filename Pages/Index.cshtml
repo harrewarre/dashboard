@@ -14,33 +14,43 @@
     <body>
         <div id="dashboard" class="dashboard">
 
-            <div class="clock" data-bind="with: clockVm">
-                <div class="time" data-bind="text: time"></div>
-                <div class="date">
-                    <span data-bind="text: day"></span> 
-                    <span data-bind="text: date"></span>
+            <div class="row">
+                <div class="col">
+                    <div class="clock" data-bind="with: clockVm">
+                    <div class="time" data-bind="text: time"></div>
+                    <div class="date">
+                        <span data-bind="text: day"></span> 
+                        <span data-bind="text: date"></span>
+                    </div>
                 </div>
-                
-            </div>
 
-            <div class="weather" data-bind="with: weatherVm">
-                <!-- ko with: weatherData -->
-                <h1 class="title" data-bind="text: description"></h1>
-                <div class="temp">
-                    <span data-bind="text: low"></span> tot <span data-bind="text: high"></span> graden.
                 </div>
-                <!-- /ko -->
-            </div>
+                <div class="col">
 
-            <div class="railway" data-bind="with: railwayVm">
-                <h1>Openbaar vervoer</h1>
-                <!-- ko foreach: railwayData -->
-                <div class="trainTime">
-                    <span data-bind="text: departureTimeString"></span><span data-bind="text: delay != null ? ('+' + delay) : ''"></span> | Spoor <span data-bind="text: track"></span> | <span data-bind="text: destination"></span> (<span data-bind="text: route"></span>)
+                    <div class="weather" data-bind="with: weatherVm">
+                        <!-- ko with: weatherData -->
+                        <div class="title" data-bind="text: description"></div>
+                        <div class="temp">
+                            <span data-bind="text: low"></span> tot <span data-bind="text: high"></span> graden
+                        </div>
+                        <!-- /ko -->
+                    </div>
+
                 </div>
-                <!-- /ko -->
             </div>
-
+            
+            <div class="row">
+                <div class="col">
+                    <div class="railway" data-bind="with: railwayVm">
+                        <h1>Openbaar vervoer</h1>
+                        <!-- ko foreach: railwayData -->
+                        <div class="trainTime">
+                            <span data-bind="text: departureTimeString"></span><span data-bind="text: delay != null ? ('+' + delay) : ''"></span> | Spoor <span data-bind="text: track"></span> | <span data-bind="text: destination"></span> (<span data-bind="text: route"></span>)
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="backdrop"></div>
