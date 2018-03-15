@@ -1,0 +1,52 @@
+@page
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dashboard</title>
+         
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> 
+        <link rel="stylesheet" href="styles.css" />
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        <div id="dashboard" class="dashboard">
+
+            <div class="clock" data-bind="with: clockVm">
+                <div class="time" data-bind="text: time"></div>
+                <div class="date">
+                    <span data-bind="text: day"></span> 
+                    <span data-bind="text: date"></span>
+                </div>
+                
+            </div>
+
+            <div class="weather" data-bind="with: weatherVm">
+                <!-- ko with: weatherData -->
+                <h1 class="title" data-bind="text: description"></h1>
+                <div class="temp">
+                    <span data-bind="text: low"></span> tot <span data-bind="text: high"></span> graden.
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <div class="railway" data-bind="with: railwayVm">
+                <h1>Openbaar vervoer</h1>
+                <!-- ko foreach: railwayData -->
+                <div class="trainTime">
+                    <span data-bind="text: departureTimeString"></span><span data-bind="text: delay != null ? ('+' + delay) : ''"></span> | Spoor <span data-bind="text: track"></span> | <span data-bind="text: destination"></span> (<span data-bind="text: route"></span>)
+                </div>
+                <!-- /ko -->
+            </div>
+
+        </div>
+
+        <div class="backdrop"></div>
+        <div class="overlay"></div>
+
+
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>

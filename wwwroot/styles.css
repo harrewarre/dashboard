@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    background-color: #999;
+    color: #fff;
+}
+
+.overlay, .backdrop, .dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.backdrop {
+    background-position: center center;
+    background-size: cover;
+    background-image: url("img/backdrop.jpg");
+    z-index: 0;
+}
+
+.overlay {
+    background-color: rgba(20, 20, 20, 0.6);
+    z-index: 1;
+}
+
+.dashboard {
+    z-index: 2;
+    font-weight: 300;
+}
+
+.weather, .clock, .railway {
+    margin: 90px 40px;
+}
+
+.weather .title {
+    font-size: 48px;
+}
+
+.weather .temp {
+    font-weight: 300;
+    font-size: 32px;
+}
+
+.clock .time {
+    font-size: 72px;
+}
+
+.clock .date {
+    font-size: 24px;
+}
+
+.railway .trainTime {
+    font-size: 22px;
+    margin: 10px 0;
+}
