@@ -36,7 +36,7 @@ html, body {
 }
 
 .clock, .weather, .railway {
-    padding: 20px;
+    padding: 40px;
 }
 
 .weather .title {
@@ -59,7 +59,39 @@ html, body {
 
 .railway .trainTime {
     font-size: 22px;
-    margin: 10px 0;
+    display: flex;
+}
+
+.railway .trainTime .time {
+    flex: 0 0 110px;
+    font-weight: bold;
+    font-size: 58px;
+    align-content: center;
+}
+
+.railway .trainTime .time.delayed {
+    color: red;
+}
+
+.railway .trainTime .info {
+    flex: 1;
+    margin-left: 20px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.railway .trainTime .info .destination,
+.railway .trainTime .info .route {
+    flex: 1;
+}
+
+.railway .trainTime .info .destination {
+    padding-top: 10px;
+}
+
+.railway .trainTime .info .route {
+    padding-bottom: 10px;
 }
 
 /* grid stuff */
@@ -72,5 +104,4 @@ html, body {
 .row > .col {
     display: block;
     flex: 1;
-    border: 1px solid red;
 }

@@ -42,11 +42,32 @@
             <div class="row">
                 <div class="col">
                     <div class="railway" data-bind="with: railwayVm">
-                        <h1>Openbaar vervoer</h1>
+                        <div>Openbaar vervoer</div>
+
+
                         <!-- ko foreach: railwayData -->
+                        
                         <div class="trainTime">
-                            <span data-bind="text: departureTimeString"></span><span data-bind="text: delay != null ? ('+' + delay) : ''"></span> | Spoor <span data-bind="text: track"></span> | <span data-bind="text: destination"></span> (<span data-bind="text: route"></span>)
+                            <div class="time" data-bind="css: { delayed: delay !== null }">
+                                <span data-bind="text: departureTimeString"></span>
+                            </div>
+                            <div class="info">
+                                <div class="destination">
+                                    <span data-bind="text: delay !== null ? ('+' + delay + '|') : ''"></span>Vanaf spoor <span data-bind="text: track"></span> richting <span data-bind="text: destination"></span></div>
+                                <div class="route">
+                                    Via <span data-bind="text: route"></span>
+                                </div>
+                            </div>
+                            <div class="notes" data-bind="if: notes">
+                                <div data-bind="foreach: notes">
+                                    <span data-bind="text: $data"></span>
+                                </div>
+                            </div>
+
+
+                            <!--  |  |  () -->
                         </div>
+
                         <!-- /ko -->
                     </div>
                 </div>
