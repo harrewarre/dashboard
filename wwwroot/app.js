@@ -33,7 +33,6 @@ function RailwayVm(config, $, ko, window, console) {
         console.log("Refreshing railway data...");
         var request = $.get(config.railwayUrl);
         request.then((result) => {
-            console.log(result);
             for(var d of result) {
                 var departure = new Date(d.departureTime);
                 d.departureTimeString = window.padTimeString(departure.getHours()) + ":" + window.padTimeString(departure.getMinutes());

@@ -48,6 +48,10 @@ html, body {
     font-size: 48px;
 }
 
+.clock {
+    padding-top: 25px;
+}
+
 .clock .time {
     font-size: 124px;
     margin: 0;
