@@ -5,6 +5,15 @@ var config = {
     railwayRefreshRate: 1000 * 60 * 5
 };
 
+window.padTimeString = function(input) {
+    input = "" + input;
+    if(input.length == 1) {
+        return "0" + input;
+    } else {
+        return input;
+    }
+}
+
 var vm = (function (cfg, ko, $, window, console) {
     console.log("Board starting...");
     var self = this;
@@ -27,19 +36,10 @@ function RailwayVm(config, $, ko, window, console) {
             console.log(result);
             for(var d of result) {
                 var departure = new Date(d.departureTime);
-                d.departureTimeString = self.padTimeString(departure.getHours()) + ":" + self.padTimeString(departure.getMinutes());
+                d.departureTimeString = window.padTimeString(departure.getHours()) + ":" + window.padTimeString(departure.getMinutes());
             }
             self.railwayData(result);
         });       
-    }
-
-    self.padTimeString = function(input) {
-        input = "" + input;
-        if(input.length == 1) {
-            return "0" + input;
-        } else {
-            return input;
-        }
     }
 
     self.railTimerHandle = window.setTimeout(() => {
@@ -76,7 +76,7 @@ function ClockVm(ko, window) {
 
     self.clockTimerHandle = window.setTimeout(() => {
         var now = new Date();
-        self.time(now.getHours() + ":" + now.getMinutes());
+        self.time(window.padTimeString(now.getHours()) + ":" + window.padTimeString(now.getMinutes()));
         self.date(now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear());
         self.day(self.getDayName(now.getDay()));
     }, 1000);
