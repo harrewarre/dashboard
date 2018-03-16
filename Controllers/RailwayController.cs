@@ -39,7 +39,7 @@ namespace dashboard.Controllers
                     var result = await client.GetStringAsync(url);
                     var document = XDocument.Parse(result);
 
-                    var resultData = document.Root.Descendants("VertrekkendeTrein").Select(tr => new
+                    var resultData = document.Root.Descendants("VertrekkendeTrein").Take(5).Select(tr => new
                     {
                         type = tr.Descendants().FirstOrDefault(d => d.Name == "TreinSoort")?.Value.Trim() ?? "Trein",
                         destination = tr.Descendants().FirstOrDefault(d => d.Name == "EindBestemming")?.Value.Trim() ?? "(Onbekend)",

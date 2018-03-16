@@ -41,7 +41,7 @@ function RailwayVm(config, $, ko, window, console) {
         });       
     }
 
-    self.railTimerHandle = window.setTimeout(() => {
+    self.railTimerHandle = window.setInterval(() => {
         self.loadRailwayData();
     }, config.railwayRefreshRate);
 
@@ -59,7 +59,7 @@ function WeatherVm(config, $, ko, window, console) {
         request.then(self.weatherData);
     }
 
-    self.weatherTimerHandler = window.setTimeout(() => {
+    self.weatherTimerHandler = window.setInterval(() => {
         self.loadWeatherData();
     }, config.weatherRefreshRate);
 
@@ -73,7 +73,7 @@ function ClockVm(ko, window) {
     self.date = ko.observable("??-??-????");
     self.day = ko.observable("?");
 
-    self.clockTimerHandle = window.setTimeout(() => {
+    self.clockTimerHandle = window.setInterval(() => {
         var now = new Date();
         self.time(window.padTimeString(now.getHours()) + ":" + window.padTimeString(now.getMinutes()));
         self.date(now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear());

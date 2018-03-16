@@ -53,7 +53,7 @@
                             </div>
                             <div class="info">
                                 <div class="destination">
-                                    <span data-bind="text: delay !== null ? ('+' + delay + '|') : ''"></span>Vanaf spoor <span data-bind="text: track"></span> richting <span data-bind="text: destination"></span></div>
+                                    <strong data-bind="text: delay !== null ? (delay + ' |') : ''"></strong> Vanaf spoor <span data-bind="text: track"></span> richting <span data-bind="text: destination"></span></div>
                                 <div class="route">
                                     Via <span data-bind="text: route"></span>
                                 </div>
@@ -63,9 +63,6 @@
                                     <span data-bind="text: $data"></span>
                                 </div>
                             </div>
-
-
-                            <!--  |  |  () -->
                         </div>
 
                         <!-- /ko -->
