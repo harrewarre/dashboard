@@ -21,6 +21,8 @@ var vm = (function (cfg, ko, $, window, console) {
     self.railwayVm = new RailwayVm(cfg, $, ko, window, console);
     self.weatherVm = new WeatherVm(cfg, $, ko, window, console);
     self.clockVm = new ClockVm(ko, window);
+    self.rainInfoVm = new RainInfoVm(document, window);
+    self.xkcdVm = new XkcdVm(ko, $, window);
 
     console.log("Board started!");
 })(config, ko, $, window, console);
@@ -101,6 +103,36 @@ function ClockVm(ko, window) {
                 return "???";
         }
     }
+}
+
+function RainInfoVm(document, window) {
+    var self = this;
+
+    window.setInterval(() => {
+        var rainInfo = document.getElementById("rainInfo");
+        var oldSrc = rainInfo.src;
+        rainInfo.src = "";
+        rainInfo.src = oldSrc;
+    },
+    1000 * 60 * 60);
+}
+
+function XkcdVm(ko, $, window) {
+    var self = this;
+    self.stripInfoUrl = "/api/xkcd/v1";
+
+    self.strip = ko.observable();
+
+    window.setInterval(self.loadComicData, 1000 * 60 * 60 * 6);
+
+    self.loadComicData = function () {
+        $.get(self.stripInfoUrl).then((response) => {
+            console.log(response);
+            self.strip(response);
+        });
+    }
+
+    self.loadComicData();
 }
 
 ko.applyBindings(vm, document.getElementById("dashboard"));

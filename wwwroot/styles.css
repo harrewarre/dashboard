@@ -98,6 +98,24 @@ html, body {
     padding-bottom: 10px;
 }
 
+.railway .note {
+    color: red;
+}
+
+.weather-wrapper {
+    margin: 0 auto;
+    width: 330px;
+    height: 330px;
+}
+
+.comic {
+    max-height: 300px;
+}
+
+.center-content {
+    text-align: center;
+}
+
 /* grid stuff */
 .row {
     display: flex;
@@ -106,6 +124,6 @@ html, body {
 }
 
 .row > .col {
-    display: block;
+    display: flex;
     flex: 1;
 }
