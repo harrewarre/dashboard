@@ -5,9 +5,9 @@ var config = {
     railwayRefreshRate: 1000 * 60 * 5
 };
 
-window.padTimeString = function(input) {
+window.padTimeString = function (input) {
     input = "" + input;
-    if(input.length == 1) {
+    if (input.length == 1) {
         return "0" + input;
     } else {
         return input;
@@ -35,12 +35,12 @@ function RailwayVm(config, $, ko, window, console) {
         console.log("Refreshing railway data...");
         var request = $.get(config.railwayUrl);
         request.then((result) => {
-            for(var d of result) {
+            for (var d of result) {
                 var departure = new Date(d.departureTime);
                 d.departureTimeString = window.padTimeString(departure.getHours()) + ":" + window.padTimeString(departure.getMinutes());
             }
             self.railwayData(result);
-        });       
+        });
     }
 
     self.railTimerHandle = window.setInterval(() => {
@@ -109,12 +109,16 @@ function RainInfoVm(document, window) {
     var self = this;
 
     window.setInterval(() => {
-        var rainInfo = document.getElementById("rainInfo");
-        var oldSrc = rainInfo.src;
-        rainInfo.src = "";
-        rainInfo.src = oldSrc;
+        var radars = ["raininfo", "raininfo-nl"];
+
+        for (let r of radars) {
+            var rainInfo = document.getElementById(r);
+            var oldSrc = rainInfo.src;
+            rainInfo.src = "";
+            rainInfo.src = oldSrc;
+        }
     },
-    1000 * 60 * 60);
+        1000 * 60 * 60);
 }
 
 function XkcdVm(ko, $, window) {
